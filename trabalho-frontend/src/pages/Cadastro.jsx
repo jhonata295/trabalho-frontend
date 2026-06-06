@@ -12,9 +12,14 @@ function Cadastro() {
     e.preventDefault();
 
     if (!nome || !cidade || !tecnico) {
-      alert("Preencha todos os campos");
-      return;
-    }
+  alert("Preencha todos os campos");
+  return;
+}
+
+if (nome.length < 3) {
+  alert("Nome deve ter no mínimo 3 caracteres");
+  return;
+}
 
     adicionarTime({
       id: Date.now(),
