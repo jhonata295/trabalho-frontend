@@ -156,3 +156,35 @@ img {
     flex-direction: column;
   }
 }
+
+.mensagem {
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  animation: aparecer 0.3s ease;
+}
+
+.sucesso {
+  background-color: #dcfce7;
+  color: #166534;
+  border-left: 5px solid #16a34a;
+}
+
+.erro {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-left: 5px solid #dc2626;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

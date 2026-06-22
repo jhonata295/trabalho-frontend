@@ -8,16 +8,23 @@ function Cadastro() {
   const [cidade, setCidade] = useState("");
   const [tecnico, setTecnico] = useState("");
 
+  const [mensagem, setMensagem] = useState("");
+  const [tipoMensagem, setTipoMensagem] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!nome || !cidade || !tecnico) {
-      alert("Preencha todos os campos");
+      setMensagem("⚠️ Preencha todos os campos obrigatórios.");
+      setTipoMensagem("erro");
       return;
     }
 
     if (nome.length < 3) {
-      alert("Nome deve ter no mínimo 3 caracteres");
+      setMensagem(
+        "⚠️ O nome do time deve possuir no mínimo 3 caracteres."
+      );
+      setTipoMensagem("erro");
       return;
     }
 
@@ -28,11 +35,16 @@ function Cadastro() {
       tecnico,
     });
 
-    alert("✅ Time cadastrado com sucesso!");
+    setMensagem("✅ Time cadastrado com sucesso!");
+    setTipoMensagem("sucesso");
 
     setNome("");
     setCidade("");
     setTecnico("");
+
+    setTimeout(() => {
+      setMensagem("");
+    }, 3000);
   };
 
   return (
@@ -42,6 +54,12 @@ function Cadastro() {
       <p>
         Cadastre novos times para gerenciar suas informações no sistema.
       </p>
+
+      {mensagem && (
+        <div className={`mensagem ${tipoMensagem}`}>
+          {mensagem}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <h2>Informações do Time</h2>
